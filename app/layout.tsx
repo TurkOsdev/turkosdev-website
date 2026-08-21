@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { SiteHeader } from "@/components/site-header";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,7 +32,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        {children}
+        <a
+          href="#icerik"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-sm focus:text-primary-foreground"
+        >
+          İçeriğe geç
+        </a>
+        <SiteHeader />
+        <main id="icerik" className="flex-1">
+          {children}
+        </main>
       </body>
     </html>
   );
