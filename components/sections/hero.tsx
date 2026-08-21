@@ -19,8 +19,8 @@ export function Hero() {
       {/* WebGL dalga alanı + üstüne binen siyah geçişler */}
       <div className="absolute inset-0 -z-10">
         <HeroWaves />
-        <div className="absolute inset-0 bg-linear-to-b from-background/75 via-background/40 to-background" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-background to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-background/70 via-background/25 to-background/85" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background to-transparent" />
       </div>
       <div aria-hidden className="grid-backdrop absolute inset-0 -z-10" />
 

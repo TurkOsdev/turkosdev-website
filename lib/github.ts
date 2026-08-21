@@ -42,6 +42,27 @@ type ApiContributor = ApiMember & {
   type: string;
 };
 
+/**
+ * GitHub API'sine hiç ulaşılamadığında sayfanın boş kalmaması için tutulan
+ * çekirdek ekip listesi. API'ye erişilebildiği anda yerini canlı veriye bırakır,
+ * bu yüzden takipçi/commit gibi değişken alanlar burada tutulmaz.
+ */
+const FALLBACK_MEMBERS: Member[] = [
+  {
+    login: "tuna4ll",
+    name: "Tuna Kılıç",
+    avatarUrl: "https://avatars.githubusercontent.com/u/66411462",
+    htmlUrl: "https://github.com/tuna4ll",
+    bio: "privacy is not a crime",
+    location: "Turkey",
+    blog: "https://tunakilic.com",
+    company: null,
+    followers: 0,
+    publicRepos: 0,
+    contributions: 0,
+  },
+];
+
 function headers(): HeadersInit {
   const base: Record<string, string> = {
     Accept: "application/vnd.github+json",
@@ -56,19 +77,28 @@ function headers(): HeadersInit {
   return base;
 }
 
-async function getJson<T>(path: string): Promise<T | null> {
-  try {
-    const response = await fetch(`${API}${path}`, {
-      headers: headers(),
-      next: { revalidate: REVALIDATE_SECONDS },
-    });
+async function getJson<T>(path: string, attempts = 3): Promise<T | null> {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const response = await fetch(`${API}${path}`, {
+        headers: headers(),
+        next: { revalidate: REVALIDATE_SECONDS },
+      });
 
-    if (!response.ok) return null;
-    return (await response.json()) as T;
-  } catch {
-    // Ağ hatası veya kota aşımı sayfanın çökmesine yol açmamalı.
-    return null;
+      // 4xx yanıtlarında tekrar denemenin faydası yok.
+      if (!response.ok) {
+        if (response.status < 500) return null;
+        continue;
+      }
+
+      return (await response.json()) as T;
+    } catch {
+      // Bağlantı hatası geçici olabilir; son denemede pes edilir.
+    }
   }
+
+  // Ağ hatası veya kota aşımı sayfanın çökmesine yol açmamalı.
+  return null;
 }
 
 /**
@@ -83,15 +113,22 @@ export async function getOrgMembers(): Promise<Member[]> {
     getJson<ApiContributor[]>(`/repos/${org}/${NOTES_REPO}/contributors?per_page=100`),
   ]);
 
+  const humanContributors = (contributors ?? []).filter(
+    (entry) => entry.type !== "Bot"
+  );
+
+  // API'ye hiç ulaşılamadıysa canlı veri yerine çekirdek listeyi göster.
+  if (!members && humanContributors.length === 0) return FALLBACK_MEMBERS;
+
   const contributionsByLogin = new Map<string, number>(
-    (contributors ?? [])
-      .filter((entry) => entry.type !== "Bot")
-      .map((entry) => [entry.login.toLowerCase(), entry.contributions])
+    humanContributors.map((entry) => [
+      entry.login.toLowerCase(),
+      entry.contributions,
+    ])
   );
 
   // Üye listesi alınamazsa katkı verenler üzerinden bir liste kurmayı dene.
-  const base: ApiMember[] =
-    members ?? (contributors ?? []).filter((entry) => entry.type !== "Bot");
+  const base: ApiMember[] = members ?? humanContributors;
 
   const profiles = await Promise.all(
     base.map(async (member) => {
