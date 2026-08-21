@@ -32,6 +32,8 @@ export const siteConfig = {
     notes: "https://github.com/TurkOsdev/osdev-notlari",
     contributing:
       "https://github.com/TurkOsdev/osdev-notlari/blob/main/CONTRIBUTING.md",
+    template: "https://github.com/TurkOsdev/osdev-notlari/blob/main/SABLON.md",
+    terms: "https://github.com/TurkOsdev/osdev-notlari/blob/main/TERIMLER.md",
     codeOfConduct:
       "https://github.com/TurkOsdev/osdev-notlari/blob/main/CODE_OF_CONDUCT.md",
     issues: "https://github.com/TurkOsdev/osdev-notlari/issues",
