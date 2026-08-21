@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 
@@ -20,7 +19,6 @@ import { cn } from "@/lib/utils";
 import { mainNav, siteConfig } from "@/lib/site";
 
 export function SiteHeader() {
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -30,10 +28,6 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   return (
     <header
@@ -109,15 +103,17 @@ export function SiteHeader() {
                     </Link>
                   </SheetClose>
                 ))}
-                <a
-                  href={siteConfig.links.github}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  <GithubIcon className="size-4" aria-hidden />
-                  GitHub
-                </a>
+                <SheetClose asChild>
+                  <a
+                    href={siteConfig.links.github}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  >
+                    <GithubIcon className="size-4" aria-hidden />
+                    GitHub
+                  </a>
+                </SheetClose>
               </nav>
             </SheetContent>
           </Sheet>
