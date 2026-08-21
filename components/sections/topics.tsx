@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { SectionHeading } from "@/components/section-heading";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { topics } from "@/lib/topics";
 
 export function Topics() {
@@ -15,11 +16,19 @@ export function Topics() {
         />
 
         <ul className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {topics.map((topic) => {
+          {topics.map((topic, index) => {
             const Icon = topic.icon;
+            // Son kart tek başına kalmasın diye satırın kalanını doldurur.
+            const isLast = index === topics.length - 1;
 
             return (
-              <li key={topic.index} className="group relative bg-card">
+              <li
+                key={topic.index}
+                className={cn(
+                  "group relative bg-card",
+                  isLast && "sm:col-span-2 lg:col-span-3"
+                )}
+              >
                 <a
                   href={topic.path}
                   target="_blank"

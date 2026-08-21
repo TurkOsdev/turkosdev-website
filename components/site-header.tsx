@@ -45,16 +45,14 @@ export function SiteHeader() {
           aria-label={`${siteConfig.name} ana sayfa`}
         >
           <Image
-            src="/turkosdevlogo.png"
+            src="/turkosdev-wordmark.png"
             alt=""
-            width={32}
-            height={32}
-            className="size-8"
+            width={495}
+            height={118}
+            className="h-5 w-auto"
             priority
           />
-          <span className="font-heading text-sm font-semibold tracking-tight">
-            Türk<span className="text-primary">OSDev</span>
-          </span>
+          <span className="sr-only">{siteConfig.name}</span>
         </Link>
 
         <nav aria-label="Ana menü" className="hidden items-center gap-1 md:flex">

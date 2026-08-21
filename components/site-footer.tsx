@@ -34,17 +34,15 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 flex flex-col gap-4 sm:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex w-fit items-center">
               <Image
-                src="/turkosdevlogo.png"
+                src="/turkosdev-wordmark.png"
                 alt=""
-                width={28}
-                height={28}
-                className="size-7"
+                width={495}
+                height={118}
+                className="h-6 w-auto"
               />
-              <span className="font-heading text-sm font-semibold tracking-tight">
-                Türk<span className="text-primary">OSDev</span>
-              </span>
+              <span className="sr-only">{siteConfig.name}</span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
               Türkçe işletim sistemi geliştirme ve düşük seviye programlama
