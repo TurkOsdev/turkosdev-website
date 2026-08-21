@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [{ source: "/team", destination: "/ekip", permanent: true }];
+  },
 };
 
 export default nextConfig;
