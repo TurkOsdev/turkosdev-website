@@ -8,8 +8,8 @@ const GradientWaves = dynamic(() => import("@/components/gradient-waves"), {
 });
 
 /**
- * Ana sayfadaki ufuk şeridi. WebGL sahnesi yalnızca istemcide ve kullanıcı
- * hareket azaltma tercihini açmadıysa yüklenir.
+ * Ana sayfa hero'sunun dalga alanı. WebGL sahnesi yalnızca istemcide ve
+ * kullanıcı hareket azaltma tercihini açmadıysa yüklenir.
  */
 export function HeroWaves() {
   const [enabled, setEnabled] = useState(false);
@@ -24,32 +24,32 @@ export function HeroWaves() {
   }, []);
 
   if (!enabled) {
-    return <div aria-hidden className="absolute inset-0 bg-[#1a050a]" />;
+    return <div aria-hidden className="absolute inset-0 bg-[#2d151a]" />;
   }
 
   return (
     <div aria-hidden className="absolute inset-0">
       <GradientWaves
-        horizonColor="#0e0304"
-        waveColor="#170406"
-        crestColor="#7a0c14"
-        speed={0.16}
-        amplitude={2.6}
-        waveScale={0.78}
-        waveRatio={0.9}
-        swell={14}
-        turbulence={9}
-        tilt={1.05}
+        horizonColor="#241a20"
+        waveColor="#38101a"
+        crestColor="#a8151f"
+        speed={0.2}
+        amplitude={2.9}
+        waveScale={0.72}
+        waveRatio={0.88}
+        swell={26}
+        turbulence={14}
+        tilt={1.12}
         zoom={1}
-        height={5}
-        fogDepth={34}
+        height={5.5}
+        fogDepth={22}
         detail="medium"
-        brightness={0.78}
+        brightness={0.82}
         opacity={1}
-        mouseInteraction={false}
-        parallaxStrength={0}
+        mouseInteraction
+        parallaxStrength={0.35}
         grain
-        grainIntensity={0.035}
+        grainIntensity={0.04}
       />
     </div>
   );
