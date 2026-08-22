@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { GithubIcon } from "@/components/icons";
 import { siteConfig } from "@/lib/site";
-import { topics } from "@/lib/topics";
 
 const columns = [
   {
@@ -12,7 +10,6 @@ const columns = [
       { label: "GitHub organizasyonu", href: siteConfig.links.github, external: true },
       { label: "OSDev notları", href: siteConfig.links.notes, external: true },
       { label: "Ekip", href: "/ekip", external: false },
-      { label: "Issue aç", href: siteConfig.links.issues, external: true },
     ],
   },
   {
@@ -20,51 +17,41 @@ const columns = [
     links: [
       { label: "Katkı rehberi", href: siteConfig.links.contributing, external: true },
       { label: "Not şablonu", href: siteConfig.links.template, external: true },
-      { label: "Terim sözlüğü", href: siteConfig.links.terms, external: true },
       { label: "Davranış kuralları", href: siteConfig.links.codeOfConduct, external: true },
     ],
   },
 ];
 
 export function SiteFooter() {
-  const startTopics = topics.slice(0, 4);
-
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
-          <div className="col-span-2 flex flex-col gap-4 sm:col-span-1">
-            <Link href="/" className="flex w-fit items-center">
+    <footer className="border-t border-rule">
+      <div className="mx-auto w-full max-w-[76rem] px-6 py-16 md:px-10 md:py-20">
+        <div className="grid gap-y-14 md:grid-cols-12 md:gap-x-16">
+          <div className="md:col-span-5">
+            <Link href="/" className="inline-block">
               <Image
                 src="/turkosdev-wordmark.png"
                 alt=""
                 width={495}
                 height={118}
-                className="h-6 w-auto"
+                className="h-5 w-auto"
               />
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+            <p className="measure-sm mt-6 text-sm leading-relaxed text-muted-foreground">
               Türkçe işletim sistemi geliştirme ve düşük seviye programlama
               kaynakları.
             </p>
-            <a
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex w-fit items-center gap-2 rounded-md text-sm text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring"
-            >
-              <GithubIcon className="size-4" aria-hidden />
-              github.com/TurkOsdev
-            </a>
           </div>
 
-          {columns.map((column) => (
-            <nav key={column.title} aria-label={column.title} className="flex flex-col gap-3">
-              <h2 className="text-xs font-medium tracking-[0.18em] text-foreground uppercase">
-                {column.title}
-              </h2>
-              <ul className="flex flex-col gap-2.5">
+          {columns.map((column, index) => (
+            <nav
+              key={column.title}
+              aria-label={column.title}
+              className={index === 0 ? "md:col-span-3 md:col-start-7" : "md:col-span-3"}
+            >
+              <h2 className="label">{column.title}</h2>
+              <ul className="mt-5 flex flex-col gap-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     {link.external ? (
@@ -89,32 +76,11 @@ export function SiteFooter() {
               </ul>
             </nav>
           ))}
-
-          <nav aria-label="Başlangıç konuları" className="flex flex-col gap-3">
-            <h2 className="text-xs font-medium tracking-[0.18em] text-foreground uppercase">
-              Başlangıç
-            </h2>
-            <ul className="flex flex-col gap-2.5">
-              {startTopics.map((topic) => (
-                <li key={topic.index}>
-                  <a
-                    href={topic.path}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {topic.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-border pt-8 sm:flex-row sm:items-center">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {siteConfig.name}. İçerikler MIT
-            lisansı ile paylaşılmaktadır.
+        <div className="mt-20 flex flex-col gap-2 border-t border-rule pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono text-xs text-muted-foreground">
+            © {new Date().getFullYear()} {siteConfig.name} — MIT
           </p>
           <a
             href={siteConfig.links.website}

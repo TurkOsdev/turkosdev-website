@@ -2,47 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Menu } from "lucide-react";
+import { useState } from "react";
 
 import { GithubIcon } from "@/components/icons";
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
 import { mainNav, siteConfig } from "@/lib/site";
 
 export function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-colors duration-300",
-        scrolled
-          ? "border-b border-border bg-background/70 backdrop-blur-xl"
-          : "border-b border-transparent"
-      )}
-    >
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+    <header className="relative z-50">
+      <div className="mx-auto flex h-20 w-full max-w-[76rem] items-center justify-between px-6 md:px-10">
         <Link
           href="/"
-          className="flex items-center gap-2.5 rounded-md outline-none focus-visible:ring-3 focus-visible:ring-ring"
-          aria-label={`${siteConfig.name} ana sayfa`}
+          className="shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <Image
             src="/turkosdev-wordmark.png"
@@ -55,67 +35,75 @@ export function SiteHeader() {
           <span className="sr-only">{siteConfig.name}</span>
         </Link>
 
-        <nav aria-label="Ana menü" className="hidden items-center gap-1 md:flex">
+        <nav
+          aria-label="Ana menü"
+          className="hidden items-center gap-9 md:flex"
+        >
           {mainNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring"
+              className="text-[0.9375rem] text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground"
             >
               {item.label}
             </Link>
           ))}
+          <a
+            href={siteConfig.links.github}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="flex items-center gap-2 text-[0.9375rem] text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground"
+          >
+            <GithubIcon className="size-4" aria-hidden />
+            GitHub
+          </a>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Button asChild size="sm" variant="outline" className="hidden sm:inline-flex">
-            <a
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer noopener"
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <button
+              type="button"
+              className="-mr-2 flex size-10 items-center justify-center text-foreground md:hidden"
             >
-              <GithubIcon aria-hidden />
-              GitHub
-            </a>
-          </Button>
-
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button size="icon-sm" variant="ghost" className="md:hidden">
-                <Menu aria-hidden />
-                <span className="sr-only">Menüyü aç</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <SheetHeader>
-                <SheetTitle className="text-left">Menü</SheetTitle>
-              </SheetHeader>
-              <nav aria-label="Mobil menü" className="flex flex-col gap-1 px-4">
-                {mainNav.map((item) => (
-                  <SheetClose asChild key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                    >
-                      {item.label}
-                    </Link>
-                  </SheetClose>
-                ))}
-                <SheetClose asChild>
-                  <a
-                    href={siteConfig.links.github}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              <span aria-hidden className="flex w-5 flex-col gap-[5px]">
+                <span className="h-px w-full bg-current" />
+                <span className="h-px w-full bg-current" />
+              </span>
+              <span className="sr-only">Menüyü aç</span>
+            </button>
+          </SheetTrigger>
+          <SheetContent
+            side="right"
+            className="border-l-0 bg-background data-[side=right]:w-full data-[side=right]:sm:max-w-full"
+          >
+            <SheetTitle className="sr-only">Menü</SheetTitle>
+            <nav
+              aria-label="Mobil menü"
+              className="mt-20 flex flex-col px-6"
+            >
+              {mainNav.map((item) => (
+                <SheetClose asChild key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="display border-t border-rule py-6 text-4xl text-foreground"
                   >
-                    <GithubIcon className="size-4" aria-hidden />
-                    GitHub
-                  </a>
+                    {item.label}
+                  </Link>
                 </SheetClose>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
+              ))}
+              <SheetClose asChild>
+                <a
+                  href={siteConfig.links.github}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="display border-t border-b border-rule py-6 text-4xl text-muted-foreground"
+                >
+                  GitHub
+                </a>
+              </SheetClose>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
