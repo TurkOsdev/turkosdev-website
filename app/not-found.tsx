@@ -24,7 +24,7 @@ export default function NotFound() {
           Ana sayfa
         </Link>
         <Link
-          href="/#konular"
+          href="/konular"
           className="text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
         >
           Konular
