@@ -1,6 +1,3 @@
-import { ArrowUpRight, GitPullRequest, Heart, ScrollText, Shield } from "lucide-react";
-
-import { SectionHeading } from "@/components/section-heading";
 import { siteConfig } from "@/lib/site";
 
 const steps = [
@@ -13,99 +10,84 @@ const steps = [
 
 const documents = [
   {
-    icon: GitPullRequest,
-    title: "CONTRIBUTING.md",
-    description: "Katkı süreci ve içerik standartları.",
+    name: "CONTRIBUTING.md",
+    description: "Katkı süreci ve içerik standartları",
     href: siteConfig.links.contributing,
   },
   {
-    icon: ScrollText,
-    title: "SABLON.md",
-    description: "Notların takip ettiği yapı.",
+    name: "SABLON.md",
+    description: "Notların takip ettiği yapı",
     href: siteConfig.links.template,
   },
   {
-    icon: Heart,
-    title: "TERIMLER.md",
-    description: "Hangi terim Türkçe, hangisi İngilizce kullanılıyor.",
+    name: "TERIMLER.md",
+    description: "Hangi terim Türkçe, hangisi İngilizce",
     href: siteConfig.links.terms,
   },
   {
-    icon: Shield,
-    title: "CODE_OF_CONDUCT.md",
-    description: "Topluluk davranış kuralları.",
+    name: "CODE_OF_CONDUCT.md",
+    description: "Topluluk davranış kuralları",
     href: siteConfig.links.codeOfConduct,
   },
 ];
 
 export function Contribute() {
   return (
-    <section id="katki" className="scroll-mt-20 py-24 sm:py-32">
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-        <SectionHeading
-          eyebrow="Katkı"
-          title="Bir bölümü üstlenmek için izin beklemeniz gerekmiyor"
-          description="Her bölümün README dosyasında planlanan konular ve durumları listelenir. ⬜ ile işaretli konulardan herhangi birini üstlenebilir, eksik bir açıklamayı düzeltebilir veya örnek kod ekleyebilirsiniz."
-        />
+    <section id="katki" className="scroll-mt-16 border-t border-rule py-28 md:py-40">
+      <div className="mx-auto w-full max-w-[76rem] px-6 md:px-10">
+        <div className="grid gap-y-16 md:grid-cols-12 md:gap-x-16">
+          <div className="md:col-span-6">
+            <p className="label">Katkı</p>
+            <h2 className="display mt-6 text-[clamp(2.25rem,4.6vw,3.75rem)]">
+              Bir bölümü üstlenmek için
+              <br />
+              izin beklemeniz gerekmiyor
+            </h2>
+            <p className="measure mt-8 text-[1.0625rem] leading-relaxed text-muted-foreground">
+              Her bölümün README dosyasında planlanan konular ve durumları
+              listelenir. İşaretsiz konulardan herhangi birini üstlenebilir,
+              eksik bir açıklamayı düzeltebilir veya örnek kod ekleyebilirsiniz.
+            </p>
+          </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
-          <ol className="flex flex-col">
+          <ol className="md:col-span-5 md:col-start-8 md:pt-14">
             {steps.map((step, index) => (
               <li
                 key={step}
-                className="relative flex gap-5 pb-8 last:pb-0"
+                className="flex gap-6 border-t border-rule py-5 last:border-b"
               >
-                {index < steps.length - 1 ? (
-                  <span
-                    aria-hidden
-                    className="absolute top-9 bottom-1 left-[15px] w-px bg-border"
-                  />
-                ) : null}
-                <span className="relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary font-mono text-xs text-foreground ring-1 ring-border">
-                  {index + 1}
+                <span className="font-mono text-xs text-muted-foreground">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="pt-1.5 text-sm leading-relaxed text-muted-foreground">
+                <span className="text-[0.9375rem] leading-relaxed text-muted-foreground">
                   {step}
-                </p>
+                </span>
               </li>
             ))}
           </ol>
+        </div>
 
-          <div>
-            <p className="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">
-              Başlamadan önce
-            </p>
-            <ul className="mt-5 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
-              {documents.map((doc) => {
-                const Icon = doc.icon;
-
-                return (
-                  <li key={doc.title} className="group bg-card">
-                    <a
-                      href={doc.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="flex h-full flex-col gap-2 p-5 outline-none transition-colors hover:bg-accent/60 focus-visible:bg-accent/60 focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-inset"
-                    >
-                      <span className="flex items-center gap-2">
-                        <Icon className="size-4 text-primary" aria-hidden />
-                        <span className="font-mono text-xs text-foreground">
-                          {doc.title}
-                        </span>
-                        <ArrowUpRight
-                          aria-hidden
-                          className="ml-auto size-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
-                        />
-                      </span>
-                      <span className="text-sm leading-relaxed text-muted-foreground">
-                        {doc.description}
-                      </span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+        <div className="mt-24 md:mt-32">
+          <p className="label">Başlamadan önce okuyun</p>
+          <ul className="mt-8 grid gap-x-16 gap-y-7 sm:grid-cols-2 md:max-w-4xl">
+            {documents.map((doc) => (
+              <li key={doc.name}>
+                <a
+                  href={doc.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group inline-flex flex-col gap-1 outline-none"
+                >
+                  <span className="font-mono text-sm text-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary">
+                    {doc.name}
+                  </span>
+                  <span className="text-sm text-muted-foreground">
+                    {doc.description}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

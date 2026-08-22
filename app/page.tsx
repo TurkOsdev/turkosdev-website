@@ -8,11 +8,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <hr className="hairline" />
       <Topics />
-      <hr className="hairline" />
       <Approach />
-      <hr className="hairline" />
       <Contribute />
       <Cta />
     </>

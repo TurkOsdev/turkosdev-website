@@ -1,29 +1,24 @@
-import { BookOpen, Check, Languages, ScrollText } from "lucide-react";
-
-import { SectionHeading } from "@/components/section-heading";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const principles = [
   {
-    icon: ScrollText,
+    index: "01",
     title: "Tanım değil, mekanizma",
     description:
       "Her not; kavramın neden gerekli olduğunu, donanım seviyesinde nasıl çalıştığını ve kernel tarafından nasıl kullanıldığını birlikte anlatır.",
   },
   {
-    icon: BookOpen,
+    index: "02",
     title: "Birincil kaynak",
     description:
       "Bilgiler; CPU üreticilerinin architecture manual'ları, donanım ve protokol spesifikasyonları ile resmi standartlara dayandırılır.",
   },
   {
-    icon: Check,
+    index: "03",
     title: "Küçük kod örnekleri",
     description:
       "Örnekler kavramı göstermeye yetecek kadar küçük tutulur. Mimariler arası davranış farkları ayrıca belirtilir.",
   },
   {
-    icon: Languages,
+    index: "04",
     title: "Tutarlı terminoloji",
     description:
       "İngilizce teknik terimler, aramalarda ve resmi dokümantasyonda karşılığı bulunabilsin diye gerektiğinde korunur.",
@@ -31,75 +26,64 @@ const principles = [
 ];
 
 const anatomy = [
-  { step: "01", label: "Kavram neden var?" },
-  { step: "02", label: "Donanımda nasıl çalışır?" },
-  { step: "03", label: "Kernel bunu nasıl kullanır?" },
-  { step: "04", label: "Gerçek bir implementasyon" },
-  { step: "05", label: "Kullanılan kaynaklar" },
+  "Kavram neden var?",
+  "Donanımda nasıl çalışır?",
+  "Kernel bunu nasıl kullanır?",
+  "Gerçek bir implementasyon",
+  "Kullanılan kaynaklar",
 ];
 
 export function Approach() {
   return (
-    <section id="yaklasim" className="relative scroll-mt-20 py-24 sm:py-32">
-      <div aria-hidden className="brand-glow absolute inset-x-0 top-0 h-64 opacity-40" />
+    <section id="yaklasim" className="scroll-mt-16 border-t border-rule py-28 md:py-40">
+      <div className="mx-auto grid w-full max-w-[76rem] gap-y-20 px-6 md:grid-cols-12 md:gap-x-16 md:px-10">
+        {/* Sol kenar sütunu: etiket ve kenar notu. */}
+        <div className="order-2 md:order-1 md:col-span-3">
+          <p className="label hidden md:block">Yaklaşım</p>
 
-      <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-        <div>
-          <SectionHeading
-            eyebrow="Yaklaşım"
-            title="Ezberletmeyen, gerekçesini anlatan notlar"
-            description="Buradaki notlar yalnızca kavramların tanımlarını vermeyi amaçlamaz; bir konunun neden o şekilde çözüldüğünü de açıklar."
-          />
-
-          <ul className="mt-10 flex flex-col gap-7">
-            {principles.map((principle) => {
-              const Icon = principle.icon;
-
-              return (
-                <li key={principle.title} className="flex gap-4">
-                  <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-foreground ring-1 ring-border">
-                    <Icon className="size-4" aria-hidden />
-                  </span>
-                  <div className="flex flex-col gap-1.5">
-                    <h3 className="font-heading text-sm font-medium">
-                      {principle.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {principle.description}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <Card className="h-fit lg:sticky lg:top-24">
-          <CardHeader className="border-b">
-            <CardTitle className="font-mono text-xs tracking-wide text-muted-foreground uppercase">
-              Bir notun anatomisi
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ol className="flex flex-col">
+          <div className="md:mt-14">
+            <p className="label">Bir notun anatomisi</p>
+            <ol className="mt-5 space-y-2.5 font-mono text-xs text-muted-foreground">
               {anatomy.map((item, index) => (
-                <li
-                  key={item.step}
-                  className="flex items-center gap-4 border-b border-border py-4 last:border-0"
-                >
-                  <span className="font-mono text-xs text-primary">{item.step}</span>
-                  <span className="text-sm text-foreground">{item.label}</span>
-                  <span
-                    aria-hidden
-                    className="ml-auto font-mono text-xs text-muted-foreground/50"
-                  >
-                    {index === anatomy.length - 1 ? "└" : "├"}
+                <li key={item} className="flex gap-3">
+                  <span className="text-primary">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ol>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+
+        {/* Ana kolon: sol marjdan içeri çekilmiş başlık. */}
+        <div className="order-1 md:order-2 md:col-span-8 md:col-start-5">
+          <p className="label md:hidden">Yaklaşım</p>
+          <h2 className="display mt-6 text-[clamp(2.25rem,4.6vw,3.75rem)] md:mt-0">
+            Ezberletmeyen,
+            <br />
+            gerekçesini anlatan notlar
+          </h2>
+
+          <p className="measure mt-8 text-[1.0625rem] leading-relaxed text-muted-foreground">
+            Buradaki notlar yalnızca kavramların tanımlarını vermeyi amaçlamaz;
+            bir konunun neden o şekilde çözüldüğünü de açıklar.
+          </p>
+
+          <div className="mt-16 grid gap-x-12 gap-y-12 sm:grid-cols-2 md:mt-20">
+            {principles.map((principle) => (
+              <div key={principle.index}>
+                <p className="font-mono text-xs text-muted-foreground">
+                  {principle.index}
+                </p>
+                <h3 className="mt-3 text-base font-medium">{principle.title}</h3>
+                <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                  {principle.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
