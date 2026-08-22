@@ -38,12 +38,12 @@ export function Contribute() {
       <div className="grid gap-y-12 md:grid-cols-12 md:gap-x-16">
         <div className="md:col-span-6">
           <p className="label">Katkı</p>
-          <h1 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
+          <h1 className="display mt-6 text-display-md">
             İzin beklemene
             <br />
             gerek yok
           </h1>
-          <p className="measure mt-7 text-[1.0625rem] leading-relaxed text-muted-foreground">
+          <p className="measure mt-7 text-lead text-muted-foreground">
             Her bölümün README&apos;sinde işaretsiz konular listelenir.
             Birini üstlen, yaz, pull request gönder.
           </p>
@@ -82,7 +82,7 @@ export function Contribute() {
                 <span className="font-mono text-xs text-muted-foreground">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                <span className="text-body text-muted-foreground">
                   {step}
                 </span>
               </li>

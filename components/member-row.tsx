@@ -28,7 +28,7 @@ export function MemberRow({ member }: { member: Member }) {
             className="size-14 shrink-0 rounded-xs object-cover grayscale md:size-16"
           />
           <div className="min-w-0">
-            <h3 className="display truncate text-lg md:text-xl">
+            <h3 className="display truncate text-display-2xs">
               {member.name}
             </h3>
             <a
@@ -44,7 +44,7 @@ export function MemberRow({ member }: { member: Member }) {
 
         <div className="md:col-span-5 md:pt-1">
           {member.bio ? (
-            <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               {member.bio}
             </p>
           ) : null}

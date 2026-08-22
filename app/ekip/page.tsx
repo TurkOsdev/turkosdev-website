@@ -32,11 +32,11 @@ export default async function TeamPage() {
       <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-16">
         <div className="md:col-span-7">
           <p className="label">Ekip</p>
-          <h1 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
+          <h1 className="display mt-6 text-display-md">
             Topluluğu kuranlar
           </h1>
         </div>
-        <p className="measure-sm text-[0.9375rem] leading-relaxed text-muted-foreground md:col-span-4 md:col-start-9 md:pb-3">
+        <p className="measure-sm text-body text-muted-foreground md:col-span-4 md:col-start-9 md:pb-3">
           Liste GitHub organizasyonundan otomatik oluşur, katkı sayısına göre
           sıralanır.
         </p>
@@ -72,11 +72,11 @@ export default async function TeamPage() {
       )}
 
       <div className="mt-24 grid gap-y-6 border-t border-rule pt-14 md:mt-32 md:grid-cols-12 md:gap-x-16">
-        <h2 className="display text-[clamp(1.375rem,2.6vw,2rem)] md:col-span-5">
+        <h2 className="display text-display-xs md:col-span-5">
           Sen de katıl
         </h2>
         <div className="md:col-span-6 md:col-start-7 md:pt-2">
-          <p className="measure text-[0.9375rem] leading-relaxed text-muted-foreground">
+          <p className="measure text-body text-muted-foreground">
             Tek şart katkı vermek. Pull request&apos;in birleştirildikten sonra
             organizasyona davet edilirsin.
           </p>

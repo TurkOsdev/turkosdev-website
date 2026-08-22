@@ -35,7 +35,7 @@ export function Hero() {
           className="label"
         />
 
-        <h1 className="mt-7 text-[clamp(1.75rem,4.6vw,3.75rem)] md:mt-9">
+        <h1 className="mt-7 text-display-lg md:mt-9">
           <span className="block leading-[0.92]">
             <SplitText
               tag="span"
@@ -64,7 +64,7 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="measure mt-8 text-[1.0625rem] leading-relaxed text-muted-foreground">
+        <p className="measure mt-8 text-lead text-muted-foreground">
           Birlikte öğreniyor, Türkçe kaynak üretiyor ve kernel yazıyoruz.
         </p>
 

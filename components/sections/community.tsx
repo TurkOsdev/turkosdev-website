@@ -49,10 +49,10 @@ export function Community() {
                   <span className="font-mono text-xs text-muted-foreground transition-colors md:col-span-1 group-hover:text-primary">
                     {path.index}
                   </span>
-                  <h2 className="display text-xl transition-colors md:col-span-4 md:text-[1.75rem] group-hover:text-primary">
+                  <h2 className="display text-display-xs transition-colors md:col-span-4 group-hover:text-primary">
                     {path.title}
                   </h2>
-                  <p className="text-[0.9375rem] text-muted-foreground md:col-span-6">
+                  <p className="text-body text-muted-foreground md:col-span-6">
                     {path.description}
                   </p>
                   <span

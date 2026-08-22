@@ -7,11 +7,11 @@ export function Topics() {
       <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-16">
         <div className="md:col-span-7">
           <p className="label">Konular</p>
-          <h1 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
+          <h1 className="display mt-6 text-display-md">
             On üç bölüm
           </h1>
         </div>
-        <p className="measure-sm text-[0.9375rem] leading-relaxed text-muted-foreground md:col-span-4 md:col-start-9 md:pb-3">
+        <p className="measure-sm text-body text-muted-foreground md:col-span-4 md:col-start-9 md:pb-3">
           Temel bileşenlerden başlayıp sürücüler, ağ ve grafiğe ilerler.
         </p>
       </div>
@@ -36,11 +36,11 @@ export function Topics() {
                   {topic.index}
                 </span>
 
-                <h2 className="display text-xl transition-colors md:col-span-3 md:text-[1.5rem] group-hover:text-primary group-focus-visible:text-primary">
+                <h2 className="display text-display-2xs transition-colors md:col-span-3 group-hover:text-primary group-focus-visible:text-primary">
                   {topic.title}
                 </h2>
 
-                <p className="text-[0.9375rem] leading-relaxed text-muted-foreground md:col-span-5">
+                <p className="text-body text-muted-foreground md:col-span-5">
                   {topic.description}
                 </p>
 
