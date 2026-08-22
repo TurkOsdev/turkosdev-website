@@ -25,7 +25,10 @@ const paths = [
 
 export function Community() {
   return (
-    <section className="border-t border-rule py-20 md:py-28">
+    <section
+      id="topluluk"
+      className="scroll-mt-[70px] border-t border-rule py-20 md:py-28"
+    >
       <div className="mx-auto w-full max-w-[76rem] px-6 md:px-10">
         <p className="label">Toplulukta ne yapıyoruz</p>
 

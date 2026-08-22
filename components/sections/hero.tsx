@@ -7,7 +7,8 @@ import { siteConfig } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[74svh] flex-col overflow-hidden">
+    // Yükseklik, yapışkan başlık (70px) çıkarılarak tam bir ekrana denk gelir.
+    <section className="relative isolate flex min-h-[calc(100svh-70px)] flex-col justify-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <HeroWaves />
         {/* Üstte menü, altta sayfa geçişi için iki işlevsel sönümleme. */}
@@ -21,7 +22,11 @@ export function Hero() {
         />
       </div>
 
-      <div className="mx-auto w-full max-w-[76rem] px-6 pt-14 md:px-10 md:pt-20">
+      {/*
+        Alt boşluk üsttekinden fazla: ortalama, yapışkan başlığın 70px’lik payını ve
+        alttaki kaydırma okunun görsel ağırlığını dengeleyecek kadar yukarı kayar.
+      */}
+      <div className="mx-auto w-full max-w-[76rem] px-6 pt-8 pb-32 md:px-10 md:pt-10 md:pb-36">
         <ShinyText
           text="Açık kaynak Türkçe OSDev topluluğu"
           speed={5}
@@ -80,6 +85,30 @@ export function Hero() {
           </Link>
         </div>
       </div>
+
+      <a
+        href="#topluluk"
+        className="group absolute inset-x-0 bottom-7 mx-auto flex w-fit flex-col items-center gap-2 text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground md:bottom-9"
+      >
+        <span
+          aria-hidden
+          className="text-[0.625rem] tracking-[0.16em] uppercase"
+        >
+          Aşağı kaydır
+        </span>
+        <svg
+          aria-hidden
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="square"
+          className="scroll-hint size-4"
+        >
+          <path d="M12 4v15M5.5 12.5 12 19l6.5-6.5" />
+        </svg>
+        <span className="sr-only">Aşağı kaydır</span>
+      </a>
     </section>
   );
 }

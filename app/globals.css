@@ -168,9 +168,31 @@
   .measure-sm {
     max-width: 38ch;
   }
+
+  /* Hero’daki aşağı kaydır oku için sessiz bir dürtme. */
+  .scroll-hint {
+    animation: scroll-hint 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
