@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // reactbits.dev'den olduğu gibi alınan bileşenler; upstream'e sadık kalsın.
+    "components/reactbits/**",
   ]),
 ]);
 
