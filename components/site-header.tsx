@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { GithubIcon } from "@/components/icons";
 import {
@@ -12,24 +14,46 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 import { mainNav, siteConfig } from "@/lib/site";
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Göstergenin durduğu sekme: fare üzerindeyken o, değilse açık sayfa.
+  const active = mainNav.find((item) => pathname === item.href)?.href ?? null;
+  const marker = hovered ?? active;
 
   return (
-    <header className="relative z-50">
-      <div className="mx-auto flex h-20 w-full max-w-[76rem] items-center justify-between px-6 md:px-10">
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-colors duration-300",
+        scrolled
+          ? "border-b border-rule bg-background/80 backdrop-blur-md"
+          : "border-b border-transparent"
+      )}
+    >
+      <div className="relative mx-auto flex h-[70px] w-full max-w-[76rem] items-center justify-between px-6 md:px-10">
         <Link
           href="/"
-          className="shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="relative z-10 shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <Image
             src="/turkosdev-wordmark.png"
             alt=""
             width={495}
             height={118}
-            className="h-5 w-auto"
+            className="h-5 w-auto transition-opacity hover:opacity-80"
             priority
           />
           <span className="sr-only">{siteConfig.name}</span>
@@ -37,27 +61,45 @@ export function SiteHeader() {
 
         <nav
           aria-label="Ana menü"
-          className="hidden items-center gap-9 md:flex"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex"
+          onMouseLeave={() => setHovered(null)}
         >
           {mainNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-[0.9375rem] text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground"
+              aria-current={active === item.href ? "page" : undefined}
+              onMouseEnter={() => setHovered(item.href)}
+              className={cn(
+                "relative px-4 py-2 text-[0.9375rem] transition-colors outline-none",
+                active === item.href
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground focus-visible:text-foreground"
+              )}
             >
+              <AnimatePresence>
+                {marker === item.href ? (
+                  <motion.span
+                    layoutId="nav-marker"
+                    className="absolute inset-0 -z-10 rounded-full bg-secondary"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                ) : null}
+              </AnimatePresence>
               {item.label}
             </Link>
           ))}
-          <a
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="flex items-center gap-2 text-[0.9375rem] text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground"
-          >
-            <GithubIcon className="size-4" aria-hidden />
-            GitHub
-          </a>
         </nav>
+
+        <a
+          href={siteConfig.links.github}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="relative z-10 hidden items-center gap-2 text-[0.9375rem] text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground md:flex"
+        >
+          <GithubIcon className="size-4" aria-hidden />
+          GitHub
+        </a>
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
@@ -77,10 +119,7 @@ export function SiteHeader() {
             className="border-l-0 bg-background data-[side=right]:w-full data-[side=right]:sm:max-w-full"
           >
             <SheetTitle className="sr-only">Menü</SheetTitle>
-            <nav
-              aria-label="Mobil menü"
-              className="mt-20 flex flex-col px-6"
-            >
+            <nav aria-label="Mobil menü" className="mt-20 flex flex-col px-6">
               {mainNav.map((item) => (
                 <SheetClose asChild key={item.href}>
                   <Link
