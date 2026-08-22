@@ -28,7 +28,7 @@ export function MemberRow({ member }: { member: Member }) {
             className="size-14 shrink-0 rounded-xs object-cover grayscale md:size-16"
           />
           <div className="min-w-0">
-            <h3 className="display truncate text-2xl md:text-[1.75rem]">
+            <h3 className="display truncate text-lg md:text-xl">
               {member.name}
             </h3>
             <a

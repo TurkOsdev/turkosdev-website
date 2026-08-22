@@ -124,7 +124,7 @@ export function SiteHeader() {
                 <SheetClose asChild key={item.href}>
                   <Link
                     href={item.href}
-                    className="display border-t border-rule py-6 text-4xl text-foreground"
+                    className="display border-t border-rule py-6 text-2xl text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -135,7 +135,7 @@ export function SiteHeader() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="display border-t border-b border-rule py-6 text-4xl text-muted-foreground"
+                  className="display border-t border-b border-rule py-6 text-2xl text-muted-foreground"
                 >
                   GitHub
                 </a>

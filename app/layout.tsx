@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 
 import { StructuredData } from "@/components/structured-data";
 import { SiteFooter } from "@/components/site-footer";
@@ -8,23 +8,9 @@ import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
-
+// Site tek bir mono aile kullanır: gövde, arayüz ve display başlıklar.
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
-
-// Yalnızca display başlıklarda kullanılır; gövde metni grotesk kalır.
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  weight: "400",
-  style: ["normal", "italic"],
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
@@ -76,7 +62,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#111111",
+  themeColor: "#131313",
   colorScheme: "dark",
 };
 
@@ -84,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="tr"
-      className={`dark ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`dark ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">

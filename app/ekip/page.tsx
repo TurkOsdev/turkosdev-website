@@ -32,7 +32,7 @@ export default async function TeamPage() {
       <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-16">
         <div className="md:col-span-7">
           <p className="label">Ekip</p>
-          <h1 className="display mt-6 text-[clamp(2.75rem,6vw,5rem)]">
+          <h1 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
             Topluluğu kuranlar
           </h1>
         </div>
@@ -72,7 +72,7 @@ export default async function TeamPage() {
       )}
 
       <div className="mt-24 grid gap-y-6 border-t border-rule pt-14 md:mt-32 md:grid-cols-12 md:gap-x-16">
-        <h2 className="display text-[clamp(1.875rem,3.4vw,2.75rem)] md:col-span-5">
+        <h2 className="display text-[clamp(1.375rem,2.6vw,2rem)] md:col-span-5">
           Sen de katıl
         </h2>
         <div className="md:col-span-6 md:col-start-7 md:pt-2">

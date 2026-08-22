@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-display: var(--font-geist-mono), ui-monospace, monospace;
   --font-heading: var(--font-sans);
   --color-brand: var(--brand);
   --color-rule: var(--rule);
@@ -52,27 +52,27 @@
 }
 
 /*
-  Tek tema: soğuk grafit. Logodaki bayrak kırmızısı tek vurgu rengidir ve
+  Tek tema: nötr koyu gri (#131313). Logodaki bayrak kırmızısı tek vurgu rengidir ve
   yalnızca işaretleyici, bağlantı ve tek bir başlık vurgusu için kullanılır.
 */
 :root,
 .dark {
   color-scheme: dark;
 
-  --background: oklch(0.213 0.007 268);
-  --foreground: oklch(0.962 0.002 268);
-  --card: oklch(0.253 0.008 268);
-  --card-foreground: oklch(0.962 0.002 268);
-  --popover: oklch(0.243 0.008 268);
-  --popover-foreground: oklch(0.962 0.002 268);
+  --background: #131313;
+  --foreground: oklch(0.955 0 0);
+  --card: oklch(0.235 0 0);
+  --card-foreground: oklch(0.955 0 0);
+  --popover: oklch(0.225 0 0);
+  --popover-foreground: oklch(0.955 0 0);
   --primary: oklch(0.578 0.229 27.6);
   --primary-foreground: oklch(0.995 0 0);
-  --secondary: oklch(0.272 0.008 268);
-  --secondary-foreground: oklch(0.962 0.002 268);
-  --muted: oklch(0.248 0.007 268);
-  --muted-foreground: oklch(0.688 0.009 268);
-  --accent: oklch(0.272 0.008 268);
-  --accent-foreground: oklch(0.962 0.002 268);
+  --secondary: oklch(0.26 0 0);
+  --secondary-foreground: oklch(0.955 0 0);
+  --muted: oklch(0.225 0 0);
+  --muted-foreground: oklch(0.665 0 0);
+  --accent: oklch(0.26 0 0);
+  --accent-foreground: oklch(0.955 0 0);
   --destructive: oklch(0.62 0.21 25);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
@@ -90,16 +90,16 @@
 
   --radius: 4px;
 
-  --sidebar: oklch(0.253 0.008 268);
-  --sidebar-foreground: oklch(0.962 0.002 268);
+  --sidebar: oklch(0.235 0 0);
+  --sidebar-foreground: oklch(0.955 0 0);
   --sidebar-primary: oklch(0.578 0.229 27.6);
   --sidebar-primary-foreground: oklch(0.995 0 0);
-  --sidebar-accent: oklch(0.272 0.008 268);
-  --sidebar-accent-foreground: oklch(0.962 0.002 268);
+  --sidebar-accent: oklch(0.26 0 0);
+  --sidebar-accent-foreground: oklch(0.955 0 0);
   --sidebar-border: oklch(1 0 0 / 12%);
   --sidebar-ring: oklch(0.578 0.229 27.6 / 50%);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 @layer base {
@@ -131,24 +131,27 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: oklch(0.33 0.008 268);
+    background: oklch(0.32 0 0);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.42 0.008 268);
+    background: oklch(0.41 0 0);
   }
 }
 
 @layer components {
-  /* Display tipografisi: serif, sıkı satır arası, optik olarak biraz negatif iz. */
+  /*
+    Display tipografisi: mono. Mono harfler geniş olduğu için iz belirgin
+    şekilde daraltılır, satır arası neredeyse kapatılır.
+  */
   .display {
     font-family: var(--font-display);
-    font-weight: 400;
-    line-height: 0.98;
-    letter-spacing: -0.015em;
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
   }
 
-  /* Bölüm etiketleri: küçük, mono, geniş harf aralığı. */
+  /* Bölüm etiketleri: küçük, geniş harf aralığı. */
   .label {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
@@ -157,13 +160,13 @@
     color: var(--muted-foreground);
   }
 
-  /* Okuma ölçüsü. Uzun satırları engeller. */
+  /* Okuma ölçüsü. Mono daha geniş olduğu için karakter sayısı düşük tutulur. */
   .measure {
-    max-width: 58ch;
+    max-width: 48ch;
   }
 
   .measure-sm {
-    max-width: 44ch;
+    max-width: 38ch;
   }
 }
 

@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <div className="mx-auto w-full max-w-[76rem] px-6 pt-24 pb-40 md:px-10 md:pt-40">
       <p className="label">404</p>
-      <h1 className="display mt-6 max-w-[14ch] text-[clamp(2.75rem,6vw,5rem)]">
+      <h1 className="display mt-6 max-w-[14ch] text-[clamp(1.75rem,4vw,3rem)]">
         Bu adreste bir sayfa yok
       </h1>
       <p className="measure mt-8 text-[1.0625rem] leading-relaxed text-muted-foreground">
