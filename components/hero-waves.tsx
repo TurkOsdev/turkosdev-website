@@ -8,9 +8,8 @@ const GradientWaves = dynamic(() => import("@/components/gradient-waves"), {
 });
 
 /**
- * Ana sayfanın arkaplanındaki dalga alanı. WebGL sahnesi yalnızca istemcide ve
- * kullanıcı hareket azaltma tercihini açmadıysa yüklenir; aksi halde geriye
- * dönük olarak statik bir degrade gösterilir.
+ * Ana sayfadaki ufuk şeridi. WebGL sahnesi yalnızca istemcide ve kullanıcı
+ * hareket azaltma tercihini açmadıysa yüklenir.
  */
 export function HeroWaves() {
   const [enabled, setEnabled] = useState(false);
@@ -25,34 +24,32 @@ export function HeroWaves() {
   }, []);
 
   if (!enabled) {
-    return (
-      <div aria-hidden className="brand-glow absolute inset-0 rotate-180 opacity-50" />
-    );
+    return <div aria-hidden className="absolute inset-0 bg-[#1a050a]" />;
   }
 
   return (
     <div aria-hidden className="absolute inset-0">
       <GradientWaves
-        horizonColor="#120306"
-        waveColor="#1c060a"
-        crestColor="#e30a17"
-        speed={0.28}
+        horizonColor="#0e0304"
+        waveColor="#170406"
+        crestColor="#7a0c14"
+        speed={0.16}
         amplitude={2.6}
-        waveScale={0.62}
+        waveScale={0.78}
         waveRatio={0.9}
-        swell={32}
-        turbulence={18}
-        tilt={1.06}
+        swell={14}
+        turbulence={9}
+        tilt={1.05}
         zoom={1}
         height={5}
-        fogDepth={21}
+        fogDepth={34}
         detail="medium"
-        brightness={1.15}
+        brightness={0.78}
         opacity={1}
-        mouseInteraction
-        parallaxStrength={0.45}
+        mouseInteraction={false}
+        parallaxStrength={0}
         grain
-        grainIntensity={0.045}
+        grainIntensity={0.035}
       />
     </div>
   );
