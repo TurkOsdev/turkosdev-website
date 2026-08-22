@@ -1,20 +1,3 @@
-import {
-  Binary,
-  BookMarked,
-  CircuitBoard,
-  Compass,
-  Cpu,
-  HardDrive,
-  MemoryStick,
-  Monitor,
-  Network,
-  Power,
-  Terminal,
-  Usb,
-  Waypoints,
-  type LucideIcon,
-} from "lucide-react";
-
 import { siteConfig } from "@/lib/site";
 
 export type Topic = {
@@ -23,7 +6,6 @@ export type Topic = {
   description: string;
   keywords: string[];
   path: string;
-  icon: LucideIcon;
 };
 
 const notes = siteConfig.links.notes;
@@ -40,7 +22,6 @@ export const topics: Topic[] = [
       "OSDev nedir, nereden başlanır ve çalışan bir geliştirme ortamı nasıl kurulur.",
     keywords: ["Başlangıç", "Toolchain", "QEMU"],
     path: `${notes}/tree/main/00-giris`,
-    icon: Compass,
   },
   {
     index: "01",
@@ -49,7 +30,6 @@ export const topics: Topic[] = [
       "x86, x86-64, ARM64 ve RISC-V mimarilerinin çalışma modları ve farkları.",
     keywords: ["x86-64", "ARM64", "RISC-V"],
     path: `${notes}/tree/main/01-mimari`,
-    icon: Cpu,
   },
   {
     index: "02",
@@ -58,7 +38,6 @@ export const topics: Topic[] = [
       "BIOS ve UEFI, bootloader yazımı ile Multiboot ve Limine gibi boot protokolleri.",
     keywords: ["BIOS", "UEFI", "Bootloader"],
     path: `${notes}/tree/main/02-boot`,
-    icon: Power,
   },
   {
     index: "03",
@@ -67,7 +46,6 @@ export const topics: Topic[] = [
       "Register'lar, calling convention'lar ve interrupt mekanizmalarıyla assembly temelleri.",
     keywords: ["NASM", "Register", "Interrupt"],
     path: `${notes}/tree/main/03-assembly`,
-    icon: Binary,
   },
   {
     index: "04",
@@ -76,7 +54,6 @@ export const topics: Topic[] = [
       "Kernel yapısı, GDT ve IDT kurulumu, exception işleme ve system call arayüzü.",
     keywords: ["GDT", "IDT", "Syscall"],
     path: `${notes}/tree/main/04-kernel`,
-    icon: CircuitBoard,
   },
   {
     index: "05",
@@ -85,7 +62,6 @@ export const topics: Topic[] = [
       "Fiziksel ve sanal bellek yönetimi, paging, heap ve allocator tasarımı.",
     keywords: ["Paging", "Heap", "Allocator"],
     path: `${notes}/tree/main/05-memory`,
-    icon: MemoryStick,
   },
   {
     index: "06",
@@ -94,7 +70,6 @@ export const topics: Topic[] = [
       "Process ve thread modelleri, context switch ve scheduling algoritmaları.",
     keywords: ["Thread", "Context switch", "Scheduler"],
     path: `${notes}/tree/main/06-process`,
-    icon: Waypoints,
   },
   {
     index: "07",
@@ -103,7 +78,6 @@ export const topics: Topic[] = [
       "Donanım erişimi, PCI ve USB veri yolları, depolama ve giriş aygıtı sürücüleri.",
     keywords: ["PCI", "USB", "IRQ"],
     path: `${notes}/tree/main/07-drivers`,
-    icon: Usb,
   },
   {
     index: "08",
@@ -112,7 +86,6 @@ export const topics: Topic[] = [
       "Dosya sistemi kavramları, VFS katmanı ve gerçek filesystem implementasyonları.",
     keywords: ["VFS", "FAT", "ext2"],
     path: `${notes}/tree/main/08-filesystems`,
-    icon: HardDrive,
   },
   {
     index: "09",
@@ -121,7 +94,6 @@ export const topics: Topic[] = [
       "libc, ELF ve diğer executable format'ları, userspace geçişi ve shell.",
     keywords: ["ELF", "libc", "Shell"],
     path: `${notes}/tree/main/09-userspace`,
-    icon: Terminal,
   },
   {
     index: "10",
@@ -130,7 +102,6 @@ export const topics: Topic[] = [
       "Ethernet, ARP, IPv4, UDP ve TCP katmanlarının kernel içinde kurulması.",
     keywords: ["Ethernet", "IPv4", "TCP"],
     path: `${notes}/tree/main/10-networking`,
-    icon: Network,
   },
   {
     index: "11",
@@ -139,7 +110,6 @@ export const topics: Topic[] = [
       "Framebuffer erişimi, DRM ve KMS ile modern grafik sistemlerinin yapısı.",
     keywords: ["Framebuffer", "DRM", "KMS"],
     path: `${notes}/tree/main/11-graphics`,
-    icon: Monitor,
   },
   {
     index: "12",
@@ -148,6 +118,5 @@ export const topics: Topic[] = [
       "Kitaplar, architecture manual'ları, makaleler ve incelenmeye değer projeler.",
     keywords: ["Kitap", "Manual", "Proje"],
     path: `${notes}/tree/main/resources`,
-    icon: BookMarked,
   },
 ];
