@@ -10,7 +10,10 @@ bölümleri ve ekibi tanıtır.
 - [React 19](https://react.dev)
 - [Tailwind CSS v4](https://tailwindcss.com)
 - [shadcn/ui](https://ui.shadcn.com) (radix-nova)
-- [ogl](https://github.com/oframe/ogl) — hero bölümündeki WebGL dalga arkaplanı
+- [React Bits](https://reactbits.dev) — Gradient Waves, Split Text, Animated
+  Content, Count Up, Shiny Text
+- [GSAP](https://gsap.com) ve [Motion](https://motion.dev) — animasyonlar
+- [ogl](https://github.com/oframe/ogl) — WebGL
 
 ## Geliştirme
 
@@ -31,14 +34,17 @@ npm run lint    # eslint
 
 ```
 app/
-  page.tsx              ana sayfa (hero, konular, yaklaşım, katkı, cta)
-  ekip/page.tsx         ekip sayfası (/team buraya yönlendirilir)
+  page.tsx              ana sayfa (hero, sayaçlar, topluluk, cta)
+  konular/page.tsx      not arşivi indeksi
+  katki/page.tsx        katkı rehberi
+  ekip/page.tsx         ekip listesi (/team buraya yönlendirilir)
   opengraph-image.tsx   dinamik OG görseli
   sitemap.ts robots.ts manifest.ts
 components/
-  sections/             ana sayfa bölümleri
+  sections/             sayfa bölümleri
+  reactbits/            reactbits.dev'den olduğu gibi alınan bileşenler
   ui/                   shadcn/ui bileşenleri
-  gradient-waves.tsx    WebGL dalga alanı
+  gradient-waves.tsx    WebGL dalga alanı (React Bits)
 lib/
   site.ts               site sabitleri ve navigasyon
   topics.ts             notlar deposunun bölüm listesi
