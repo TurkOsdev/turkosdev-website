@@ -50,7 +50,6 @@ export type NavItem = {
 
 export const mainNav: NavItem[] = [
   { href: "/#konular", label: "Konular" },
-  { href: "/#yaklasim", label: "Yaklaşım" },
   { href: "/ekip", label: "Ekip" },
   { href: "/#katki", label: "Katkı" },
 ];
