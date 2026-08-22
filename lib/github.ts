@@ -158,15 +158,6 @@ export async function getOrgMembers(): Promise<Member[]> {
   });
 }
 
-/** Notlar deposunun yıldız sayısı. Alınamazsa 0 döner ve sayaç gizlenir. */
-export async function getRepoStars(): Promise<number> {
-  const repo = await getJson<{ stargazers_count: number }>(
-    `/repos/${siteConfig.org}/${NOTES_REPO}`
-  );
-
-  return repo?.stargazers_count ?? 0;
-}
-
 function normalizeUrl(value: string) {
   const trimmed = value.trim();
   if (!trimmed) return null;

@@ -38,7 +38,7 @@ export function Contribute() {
       <div className="grid gap-y-12 md:grid-cols-12 md:gap-x-16">
         <div className="md:col-span-6">
           <p className="label">Katkı</p>
-          <h1 className="display mt-6 text-[clamp(2.75rem,6vw,5rem)]">
+          <h1 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
             İzin beklemene
             <br />
             gerek yok

@@ -7,7 +7,7 @@ export function Topics() {
       <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-16">
         <div className="md:col-span-7">
           <p className="label">Konular</p>
-          <h1 className="display mt-6 text-[clamp(2.75rem,6vw,5rem)]">
+          <h1 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
             On üç bölüm
           </h1>
         </div>
@@ -36,7 +36,7 @@ export function Topics() {
                   {topic.index}
                 </span>
 
-                <h2 className="display text-3xl transition-colors md:col-span-3 md:text-[2rem] group-hover:text-primary group-focus-visible:text-primary">
+                <h2 className="display text-xl transition-colors md:col-span-3 md:text-[1.5rem] group-hover:text-primary group-focus-visible:text-primary">
                   {topic.title}
                 </h2>
 

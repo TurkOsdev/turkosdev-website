@@ -6,7 +6,7 @@ export function Cta() {
     <section className="border-t border-rule py-24 md:py-32">
       <AnimatedContent distance={40} duration={0.7} threshold={0.2}>
         <div className="mx-auto grid w-full max-w-[76rem] gap-y-10 px-6 md:grid-cols-12 md:items-end md:gap-x-16 md:px-10">
-          <h2 className="display text-[clamp(2.5rem,5.5vw,4.5rem)] md:col-span-7">
+          <h2 className="display text-[clamp(1.625rem,3.6vw,2.75rem)] md:col-span-7">
             Topluluk katkıyla büyür
           </h2>
 

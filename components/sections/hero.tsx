@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[82svh] flex-col overflow-hidden">
+    <section className="relative isolate flex min-h-[74svh] flex-col overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <HeroWaves />
         {/* Üstte menü, altta sayfa geçişi için iki işlevsel sönümleme. */}
@@ -30,7 +30,7 @@ export function Hero() {
           className="label"
         />
 
-        <h1 className="mt-7 text-[clamp(2.75rem,7.6vw,6.25rem)] md:mt-9">
+        <h1 className="mt-7 text-[clamp(1.75rem,4.6vw,3.75rem)] md:mt-9">
           <span className="block leading-[0.92]">
             <SplitText
               tag="span"
