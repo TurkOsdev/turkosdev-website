@@ -7,17 +7,17 @@ const columns = [
   {
     title: "Topluluk",
     links: [
-      { label: "GitHub organizasyonu", href: siteConfig.links.github, external: true },
-      { label: "OSDev notları", href: siteConfig.links.notes, external: true },
+      { label: "Konular", href: "/konular", external: false },
       { label: "Ekip", href: "/ekip", external: false },
+      { label: "Katkı", href: "/katki", external: false },
     ],
   },
   {
-    title: "Katkı",
+    title: "GitHub",
     links: [
-      { label: "Katkı rehberi", href: siteConfig.links.contributing, external: true },
-      { label: "Not şablonu", href: siteConfig.links.template, external: true },
-      { label: "Davranış kuralları", href: siteConfig.links.codeOfConduct, external: true },
+      { label: "Organizasyon", href: siteConfig.links.github, external: true },
+      { label: "OSDev notları", href: siteConfig.links.notes, external: true },
+      { label: "Issue aç", href: siteConfig.links.issues, external: true },
     ],
   },
 ];

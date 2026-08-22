@@ -4,19 +4,17 @@ import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-
-  return [
-    {
-      url: siteConfig.url,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${siteConfig.url}/ekip`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
+  const routes = [
+    { path: "", priority: 1 },
+    { path: "/konular", priority: 0.9 },
+    { path: "/katki", priority: 0.8 },
+    { path: "/ekip", priority: 0.7 },
   ];
+
+  return routes.map((route) => ({
+    url: `${siteConfig.url}${route.path}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: route.priority,
+  }));
 }
