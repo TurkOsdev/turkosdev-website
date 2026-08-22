@@ -1,3 +1,4 @@
+import { Action } from "@/components/action";
 import AnimatedContent from "@/components/reactbits/AnimatedContent";
 import { siteConfig } from "@/lib/site";
 
@@ -11,22 +12,12 @@ export function Cta() {
           </h2>
 
           <div className="flex flex-col items-start gap-5 md:col-span-4 md:col-start-9 md:items-end md:pb-3">
-            <a
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="rounded-xs bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors outline-none hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
+            <Action href={siteConfig.links.github} external>
               GitHub&apos;da katıl
-            </a>
-            <a
-              href={siteConfig.links.issues}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
-            >
+            </Action>
+            <Action href={siteConfig.links.issues} variant="quiet" external>
               Açık issue&apos;lara bak
-            </a>
+            </Action>
           </div>
         </div>
       </AnimatedContent>

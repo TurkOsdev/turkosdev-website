@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { Action } from "@/components/action";
 import { HeroWaves } from "@/components/hero-waves";
 import ShinyText from "@/components/reactbits/ShinyText";
 import SplitText from "@/components/reactbits/SplitText";
@@ -69,33 +68,20 @@ export function Hero() {
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="rounded-xs bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors outline-none hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
+          <Action href={siteConfig.links.github} external>
             Topluluğa katıl
-          </a>
-          <Link
-            href="/konular"
-            className="text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
-          >
+          </Action>
+          <Action href="/konular" variant="quiet">
             Notlara göz at
-          </Link>
+          </Action>
         </div>
       </div>
 
       <a
         href="#topluluk"
-        className="group absolute inset-x-0 bottom-7 mx-auto flex w-fit flex-col items-center gap-2 text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground md:bottom-9"
+        className="focus-ring group absolute inset-x-0 bottom-7 mx-auto flex w-fit flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-foreground md:bottom-9"
       >
-        <span
-          aria-hidden
-          className="text-[0.625rem] tracking-[0.16em] uppercase"
-        >
-          Aşağı kaydır
-        </span>
+        <span className="label">Aşağı kaydır</span>
         <svg
           aria-hidden
           viewBox="0 0 24 24"
@@ -107,7 +93,6 @@ export function Hero() {
         >
           <path d="M12 4v15M5.5 12.5 12 19l6.5-6.5" />
         </svg>
-        <span className="sr-only">Aşağı kaydır</span>
       </a>
     </section>
   );

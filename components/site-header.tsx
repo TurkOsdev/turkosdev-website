@@ -46,7 +46,7 @@ export function SiteHeader() {
       <div className="relative mx-auto flex h-[70px] w-full max-w-[76rem] items-center justify-between px-6 md:px-10">
         <Link
           href="/"
-          className="relative z-10 shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="focus-ring relative z-10 shrink-0"
         >
           <Image
             src="/turkosdev-wordmark.png"
@@ -71,7 +71,7 @@ export function SiteHeader() {
               aria-current={active === item.href ? "page" : undefined}
               onMouseEnter={() => setHovered(item.href)}
               className={cn(
-                "relative px-4 py-2 text-[0.9375rem] transition-colors outline-none",
+                "focus-ring relative px-4 py-2 text-[0.9375rem] transition-colors",
                 active === item.href
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground focus-visible:text-foreground"
@@ -86,6 +86,13 @@ export function SiteHeader() {
                   />
                 ) : null}
               </AnimatePresence>
+              {/* Açık sayfa, hover göstergesinden ayrışsın diye kırmızı çizgi alır. */}
+              {active === item.href ? (
+                <span
+                  aria-hidden
+                  className="absolute inset-x-4 -bottom-px h-px bg-primary"
+                />
+              ) : null}
               {item.label}
             </Link>
           ))}
@@ -95,7 +102,7 @@ export function SiteHeader() {
           href={siteConfig.links.github}
           target="_blank"
           rel="noreferrer noopener"
-          className="relative z-10 hidden items-center gap-2 text-[0.9375rem] text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:text-foreground md:flex"
+          className="focus-ring relative z-10 hidden items-center gap-2 text-[0.9375rem] text-muted-foreground transition-colors hover:text-foreground md:flex"
         >
           <GithubIcon className="size-4" aria-hidden />
           GitHub
@@ -105,7 +112,7 @@ export function SiteHeader() {
           <SheetTrigger asChild>
             <button
               type="button"
-              className="-mr-2 flex size-10 items-center justify-center text-foreground md:hidden"
+              className="focus-ring -mr-2 flex size-10 items-center justify-center text-foreground md:hidden"
             >
               <span aria-hidden className="flex w-5 flex-col gap-[5px]">
                 <span className="h-px w-full bg-current" />
@@ -124,7 +131,7 @@ export function SiteHeader() {
                 <SheetClose asChild key={item.href}>
                   <Link
                     href={item.href}
-                    className="display border-t border-rule py-6 text-2xl text-foreground"
+                    className="focus-ring display border-t border-rule py-6 text-2xl text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -135,7 +142,7 @@ export function SiteHeader() {
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="display border-t border-b border-rule py-6 text-2xl text-muted-foreground"
+                  className="focus-ring display border-t border-b border-rule py-6 text-2xl text-muted-foreground"
                 >
                   GitHub
                 </a>

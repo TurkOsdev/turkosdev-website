@@ -18,14 +18,14 @@ export function MemberRow({ member }: { member: Member }) {
 
   return (
     <li className="border-t border-rule last:border-b">
-      <article className="grid grid-cols-1 gap-x-8 gap-y-5 py-8 md:grid-cols-12 md:py-10">
+      <article className="group grid grid-cols-1 gap-x-8 gap-y-5 py-8 md:grid-cols-12 md:py-10">
         <div className="flex items-center gap-5 md:col-span-4">
           <Image
             src={member.avatarUrl}
             alt=""
             width={72}
             height={72}
-            className="size-14 shrink-0 rounded-xs object-cover grayscale md:size-16"
+            className="size-14 shrink-0 rounded-xs object-cover grayscale transition-[filter] duration-500 md:size-16 group-hover:grayscale-0"
           />
           <div className="min-w-0">
             <h3 className="display truncate text-display-2xs">
@@ -35,7 +35,7 @@ export function MemberRow({ member }: { member: Member }) {
               href={member.htmlUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="font-mono text-xs text-muted-foreground transition-colors hover:text-primary"
+              className="focus-ring font-mono text-xs text-muted-foreground transition-colors hover:text-primary"
             >
               @{member.login}
             </a>
@@ -60,7 +60,7 @@ export function MemberRow({ member }: { member: Member }) {
             href={member.htmlUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
+            className="focus-ring text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
           >
             GitHub
           </a>
@@ -69,7 +69,7 @@ export function MemberRow({ member }: { member: Member }) {
               href={member.blog}
               target="_blank"
               rel="noreferrer noopener"
-              className="text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
+              className="focus-ring text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
             >
               {hostOf(member.blog)}
             </a>

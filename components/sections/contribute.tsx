@@ -1,4 +1,6 @@
+import { Action } from "@/components/action";
 import AnimatedContent from "@/components/reactbits/AnimatedContent";
+import { SectionHead } from "@/components/section-head";
 import { siteConfig } from "@/lib/site";
 
 const steps = [
@@ -34,36 +36,31 @@ const documents = [
 
 export function Contribute() {
   return (
-    <div className="mx-auto w-full max-w-[76rem] px-6 pt-12 pb-28 md:px-10 md:pt-20 md:pb-36">
-      <div className="grid gap-y-12 md:grid-cols-12 md:gap-x-16">
-        <div className="md:col-span-6">
-          <p className="label">Katkı</p>
-          <h1 className="display mt-6 text-display-md">
+    <div className="mx-auto w-full max-w-[76rem] px-6 pt-16 pb-28 md:px-10 md:pt-28 md:pb-36">
+      <SectionHead
+        label="Katkı"
+        title={
+          <>
             İzin beklemene
             <br />
             gerek yok
-          </h1>
-          <p className="measure mt-7 text-lead text-muted-foreground">
-            Her bölümün README&apos;sinde işaretsiz konular listelenir.
+          </>
+        }
+        note="Her bölümün README'sinde üstlenilmemiş konular listelenir."
+      />
+
+      <div className="mt-14 grid gap-y-12 md:mt-20 md:grid-cols-12 md:gap-x-16">
+        <div className="md:col-span-6">
+          <p className="measure text-lead text-muted-foreground">
             Birini üstlen, yaz, pull request gönder.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <a
-              href={siteConfig.links.contributing}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="rounded-xs bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors outline-none hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
+            <Action href={siteConfig.links.contributing} external>
               Katkı rehberi
-            </a>
-            <a
-              href={siteConfig.links.issues}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
-            >
+            </Action>
+            <Action href={siteConfig.links.issues} variant="quiet" external>
               Açık issue&apos;lar
-            </a>
+            </Action>
           </div>
         </div>
 
@@ -71,7 +68,7 @@ export function Contribute() {
           distance={30}
           duration={0.6}
           threshold={0.15}
-          className="md:col-span-5 md:col-start-8 md:pt-16"
+          className="md:col-span-5 md:col-start-8"
         >
           <ol>
             {steps.map((step, index) => (
@@ -82,9 +79,7 @@ export function Contribute() {
                 <span className="font-mono text-xs text-muted-foreground">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="text-body text-muted-foreground">
-                  {step}
-                </span>
+                <span className="text-body text-muted-foreground">{step}</span>
               </li>
             ))}
           </ol>
@@ -92,7 +87,7 @@ export function Contribute() {
       </div>
 
       <div className="mt-24 md:mt-32">
-        <p className="label">Başlamadan önce oku</p>
+        <p className="label text-muted-foreground">Başlamadan önce oku</p>
         <ul className="mt-8 grid gap-x-16 gap-y-7 sm:grid-cols-2 md:max-w-4xl">
           {documents.map((doc) => (
             <li key={doc.name}>
@@ -100,9 +95,9 @@ export function Contribute() {
                 href={doc.href}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="group inline-flex flex-col gap-1 outline-none"
+                className="focus-ring group inline-flex flex-col gap-1"
               >
-                <span className="font-mono text-sm text-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary">
+                <span className="font-mono text-sm text-foreground transition-colors group-hover:text-primary">
                   {doc.name}
                 </span>
                 <span className="text-sm text-muted-foreground">

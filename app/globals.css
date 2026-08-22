@@ -165,13 +165,21 @@
     letter-spacing: -0.045em;
   }
 
-  /* Bölüm etiketleri: küçük, geniş harf aralığı. */
+  /* Bölüm etiketleri: küçük, geniş harf aralığı. Renk çağıran tarafta verilir. */
   .label {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--muted-foreground);
+  }
+
+  /*
+    Tek odak göstergesi. Tuşlar, satır bağlantıları ve menü aynı halkayı
+    kullanır; klavyeyle gezerken hiçbir durak kaybolmaz.
+  */
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
   }
 
   /* Okuma ölçüsü. Mono daha geniş olduğu için karakter sayısı düşük tutulur. */
