@@ -28,7 +28,7 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-[76rem] px-6 py-16 md:px-10 md:py-20">
         <div className="grid gap-y-14 md:grid-cols-12 md:gap-x-16">
           <div className="md:col-span-5">
-            <Link href="/" className="inline-block">
+            <Link href="/" className="focus-ring inline-block">
               <Image
                 src="/turkosdev-wordmark.png"
                 alt=""
@@ -50,7 +50,7 @@ export function SiteFooter() {
               aria-label={column.title}
               className={index === 0 ? "md:col-span-3 md:col-start-7" : "md:col-span-3"}
             >
-              <h2 className="label">{column.title}</h2>
+              <h2 className="label text-muted-foreground">{column.title}</h2>
               <ul className="mt-5 flex flex-col gap-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
@@ -59,14 +59,14 @@ export function SiteFooter() {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        className="focus-ring text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {link.label}
                       </a>
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        className="focus-ring text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {link.label}
                       </Link>
@@ -86,7 +86,7 @@ export function SiteFooter() {
             href={siteConfig.links.website}
             target="_blank"
             rel="noreferrer noopener"
-            className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+            className="focus-ring font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
           >
             Bu site açık kaynak
           </a>

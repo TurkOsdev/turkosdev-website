@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
+import { Action } from "@/components/action";
 import { MemberRow } from "@/components/member-row";
 import AnimatedContent from "@/components/reactbits/AnimatedContent";
+import { SectionHead } from "@/components/section-head";
 import { getOrgMembers } from "@/lib/github";
 import { siteConfig } from "@/lib/site";
 
@@ -28,19 +30,12 @@ export default async function TeamPage() {
   const members = await getOrgMembers();
 
   return (
-    <div className="mx-auto w-full max-w-[76rem] px-6 pt-12 pb-28 md:px-10 md:pt-20 md:pb-36">
-      <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-16">
-        <div className="md:col-span-7">
-          <p className="label">Ekip</p>
-          <h1 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
-            Topluluğu kuranlar
-          </h1>
-        </div>
-        <p className="measure-sm text-[0.9375rem] leading-relaxed text-muted-foreground md:col-span-4 md:col-start-9 md:pb-3">
-          Liste GitHub organizasyonundan otomatik oluşur, katkı sayısına göre
-          sıralanır.
-        </p>
-      </div>
+    <div className="mx-auto w-full max-w-[76rem] px-6 pt-16 pb-28 md:px-10 md:pt-28 md:pb-36">
+      <SectionHead
+        label="Ekip"
+        title="Topluluğu kuranlar"
+        note="Liste GitHub organizasyonundan otomatik oluşur, katkı sayısına göre sıralanır."
+      />
 
       {members.length > 0 ? (
         <ul className="mt-14 md:mt-20">
@@ -63,7 +58,7 @@ export default async function TeamPage() {
             href={`${siteConfig.links.github}/people`}
             target="_blank"
             rel="noreferrer noopener"
-            className="text-foreground underline decoration-rule underline-offset-4 hover:decoration-current"
+            className="focus-ring text-foreground underline decoration-rule underline-offset-4 hover:decoration-current"
           >
             Organizasyon sayfasına
           </a>{" "}
@@ -72,22 +67,21 @@ export default async function TeamPage() {
       )}
 
       <div className="mt-24 grid gap-y-6 border-t border-rule pt-14 md:mt-32 md:grid-cols-12 md:gap-x-16">
-        <h2 className="display text-[clamp(1.375rem,2.6vw,2rem)] md:col-span-5">
+        <h2 className="display text-display-xs md:col-span-5">
           Sen de katıl
         </h2>
         <div className="md:col-span-6 md:col-start-7 md:pt-2">
-          <p className="measure text-[0.9375rem] leading-relaxed text-muted-foreground">
+          <p className="measure text-body text-muted-foreground">
             Tek şart katkı vermek. Pull request&apos;in birleştirildikten sonra
             organizasyona davet edilirsin.
           </p>
-          <a
+          <Action
             href={siteConfig.links.contributing}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="mt-6 inline-block rounded-xs bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors outline-none hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            external
+            className="mt-6"
           >
             Nasıl katkı verilir
-          </a>
+          </Action>
         </div>
       </div>
     </div>

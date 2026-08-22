@@ -25,9 +25,12 @@ const paths = [
 
 export function Community() {
   return (
-    <section className="border-t border-rule py-20 md:py-28">
+    <section
+      id="topluluk"
+      className="scroll-mt-[70px] border-t border-rule py-20 md:py-28"
+    >
       <div className="mx-auto w-full max-w-[76rem] px-6 md:px-10">
-        <p className="label">Toplulukta ne yapıyoruz</p>
+        <p className="label text-muted-foreground">Toplulukta ne yapıyoruz</p>
 
         <ul className="mt-10 md:mt-14">
           {paths.map((path, index) => (
@@ -41,15 +44,15 @@ export function Community() {
               <li className="border-t border-rule last:border-b">
                 <Link
                   href={path.href}
-                  className="group grid grid-cols-1 gap-x-8 gap-y-2 py-7 outline-none md:grid-cols-12 md:items-baseline md:py-9"
+                  className="focus-ring group grid grid-cols-1 gap-x-8 gap-y-2 py-7 transition-colors hover:bg-foreground/[0.025] md:grid-cols-12 md:items-baseline md:py-9"
                 >
                   <span className="font-mono text-xs text-muted-foreground transition-colors md:col-span-1 group-hover:text-primary">
                     {path.index}
                   </span>
-                  <h2 className="display text-xl transition-colors md:col-span-4 md:text-[1.75rem] group-hover:text-primary">
+                  <h2 className="display text-display-xs transition-colors md:col-span-4 group-hover:text-primary">
                     {path.title}
                   </h2>
-                  <p className="text-[0.9375rem] text-muted-foreground md:col-span-6">
+                  <p className="text-body text-muted-foreground md:col-span-6">
                     {path.description}
                   </p>
                   <span

@@ -49,6 +49,20 @@
   --radius-2xl: 8px;
   --radius-3xl: 10px;
   --radius-4xl: 12px;
+
+  /*
+    Tipografi ölçeği. Başlıklar beş adım, gövde iki adım; sayfalar bu adımların
+    dışına çıkmaz, böylece hiyerarşi her sayfada aynı okunur.
+  */
+  --text-display-lg: clamp(1.75rem, 4.6vw, 3.75rem);
+  --text-display-md: clamp(1.75rem, 4vw, 3rem);
+  --text-display-sm: clamp(1.625rem, 3.4vw, 2.5rem);
+  --text-display-xs: clamp(1.375rem, 2.6vw, 1.75rem);
+  --text-display-2xs: clamp(1.125rem, 1.8vw, 1.5rem);
+  --text-lead: 1.0625rem;
+  --text-lead--line-height: 1.65;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.7;
 }
 
 /*
@@ -151,13 +165,21 @@
     letter-spacing: -0.045em;
   }
 
-  /* Bölüm etiketleri: küçük, geniş harf aralığı. */
+  /* Bölüm etiketleri: küçük, geniş harf aralığı. Renk çağıran tarafta verilir. */
   .label {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--muted-foreground);
+  }
+
+  /*
+    Tek odak göstergesi. Tuşlar, satır bağlantıları ve menü aynı halkayı
+    kullanır; klavyeyle gezerken hiçbir durak kaybolmaz.
+  */
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
   }
 
   /* Okuma ölçüsü. Mono daha geniş olduğu için karakter sayısı düşük tutulur. */
@@ -168,9 +190,31 @@
   .measure-sm {
     max-width: 38ch;
   }
+
+  /* Hero’daki aşağı kaydır oku için sessiz bir dürtme. */
+  .scroll-hint {
+    animation: scroll-hint 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
