@@ -36,6 +36,7 @@ npm run lint    # eslint
 app/
   page.tsx              ana sayfa (hero, sayaçlar, topluluk, cta)
   konular/page.tsx      not arşivi indeksi
+  blog/                 blog listesi, yazı sayfaları, RSS (/blog/rss.xml)
   katki/page.tsx        katkı rehberi
   ekip/page.tsx         ekip listesi (/team buraya yönlendirilir)
   opengraph-image.tsx   dinamik OG görseli
@@ -48,6 +49,9 @@ components/
 lib/
   site.ts               site sabitleri ve navigasyon
   topics.ts             notlar deposunun bölüm listesi
+  blog.ts               public/blogs altındaki markdown yazılarını okur
+public/
+  blogs/                blog yazıları (*.md)
   github.ts             GitHub API'sinden üye/katkı verisi
 ```
 
@@ -66,6 +70,29 @@ Ekip listesi build/ISR sırasında GitHub API'sinden çekilir ve saatte bir taze
 Organizasyona katılıp üyeliğini herkese açık yapan herkes otomatik olarak listelenir;
 sıralama `osdev-notlari` deposundaki katkı sayısına göre yapılır. API'ye ulaşılamazsa
 `lib/github.ts` içindeki çekirdek listeye düşülür.
+
+## Blog
+
+`public/blogs/` altındaki her `.md` dosyası (alt klasörler dahil) otomatik olarak
+bir blog yazısı olur. Adres dosya adından gelir: `public/blogs/ilk-yazi.md` →
+`/blog/ilk-yazi`. Alt klasörler sadece düzen içindir, dosya adları benzersiz olmalı.
+
+Dosya `+++` ile sınırlanmış bir TOML başlığıyla başlar:
+
+```toml
++++
+baslik = "İşletim Sistemi Nasıl Yazılır?"
+aciklama = "Arama sonuçlarında görünen özet, en fazla ~155 karakter."
+yazar = "Tuna Kılıç <tuna@tunakilic.com>"   # birden fazla yazar için dizi
+tarih = 2026-10-28
+guncelleme = 2026-11-02                      # opsiyonel
+etiketler = ["osdev", "kernel"]              # opsiyonel
+taslak = true                                # opsiyonel, sadece `next dev`'de görünür
++++
+```
+
+Sayfa başlığı `baslik` alanından gelir, bu yüzden gövde `##` ile başlamalı.
+Zorunlu alanlardan biri eksik olursa build dosya adını belirten bir hatayla durur.
 
 ## Lisans
 

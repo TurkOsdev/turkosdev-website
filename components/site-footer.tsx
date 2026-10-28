@@ -8,6 +8,7 @@ const columns = [
     title: "Topluluk",
     links: [
       { label: "Konular", href: "/konular", external: false },
+      { label: "Blog", href: "/blog", external: false },
       { label: "Ekip", href: "/ekip", external: false },
       { label: "Katkı", href: "/katki", external: false },
     ],

@@ -31,7 +31,10 @@ export function SiteHeader() {
   }, []);
 
   // Göstergenin durduğu sekme: fare üzerindeyken o, değilse açık sayfa.
-  const active = mainNav.find((item) => pathname === item.href)?.href ?? null;
+  const active =
+    mainNav.find(
+      (item) => pathname === item.href || pathname.startsWith(`${item.href}/`)
+    )?.href ?? null;
   const marker = hovered ?? active;
 
   return (
