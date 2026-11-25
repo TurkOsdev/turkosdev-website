@@ -8,7 +8,7 @@ export function Hero() {
     <section className="pt-16 pb-20 md:pt-24 md:pb-24">
       <div className="mx-auto w-full max-w-[76rem] px-6 md:px-8">
         <div className="max-w-3xl">
-          <p className="label text-muted-foreground">
+          <p className="label text-brand">
             Açık kaynak Türkçe OSDev topluluğu
           </p>
 

@@ -40,7 +40,7 @@ export function Community() {
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="label text-muted-foreground transition-colors duration-150 group-hover:text-brand">
+                    <span className="label text-brand">
                       {path.index}
                     </span>
                     <ArrowRight

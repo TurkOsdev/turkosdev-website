@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 */
 const variants = {
   primary:
-    "inline-flex h-11 items-center justify-center rounded-lg bg-foreground px-5 text-sm font-medium text-background shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white active:scale-[0.98]",
+    "inline-flex h-11 items-center justify-center rounded-lg bg-primary px-5 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-brand active:scale-[0.98]",
   secondary:
     "inline-flex h-11 items-center justify-center rounded-lg border border-rule bg-secondary px-5 text-sm font-medium text-foreground transition-[background-color,border-color,transform] duration-150 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-foreground/20 hover:bg-[#2b2b2e] active:scale-[0.98]",
   quiet:
