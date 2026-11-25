@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { AuthorLine } from "@/components/author-line";
 import { editUrl, formatDate, getAllPosts, getPost } from "@/lib/blog";
@@ -94,7 +95,7 @@ export default async function BlogPostPage({
   };
 
   return (
-    <article className="mx-auto w-full max-w-[76rem] px-6 pt-16 pb-28 md:px-10 md:pt-28 md:pb-36">
+    <article className="mx-auto w-full max-w-[76rem] px-6 pt-16 pb-24 md:px-8 md:pt-24 md:pb-32">
       <script
         type="application/ld+json"
         // Markdown başlığından gelen metin script etiketini kapatamasın diye `<` kaçırılır.
@@ -107,7 +108,7 @@ export default async function BlogPostPage({
         <nav aria-label="Konum" className="label text-muted-foreground">
           <Link
             href="/blog"
-            className="focus-ring transition-colors hover:text-foreground"
+            className="focus-ring transition-colors duration-150 hover:text-foreground"
           >
             Blog
           </Link>
@@ -116,16 +117,16 @@ export default async function BlogPostPage({
           ) : null}
         </nav>
 
-        <h1 className="display mt-6 text-display-md">{post.title}</h1>
+        <h1 className="display mt-4 text-display-md">{post.title}</h1>
 
-        <p className="measure mt-8 text-lead text-muted-foreground">
+        <p className="measure mt-6 text-lead text-secondary-text">
           {post.description}
         </p>
 
-        <dl className="mt-10 flex flex-wrap items-baseline gap-x-10 gap-y-4 border-t border-rule pt-6 font-mono text-xs text-muted-foreground">
+        <dl className="mt-8 flex flex-wrap items-baseline gap-x-10 gap-y-4 border-t border-rule pt-6 font-mono text-xs tabular-nums text-muted-foreground">
           <div className="w-full">
             <dt className="sr-only">Yazar</dt>
-            <dd className="flex flex-col gap-1.5 text-body">
+            <dd className="flex flex-col gap-1.5 font-sans text-body">
               {post.authors.map((author) => (
                 <AuthorLine key={author.name} author={author} />
               ))}
@@ -152,15 +153,15 @@ export default async function BlogPostPage({
         </dl>
       </header>
 
-      <div className="mt-14 grid gap-y-12 md:mt-20 lg:grid-cols-12 lg:gap-x-16">
+      <div className="mt-12 grid gap-y-12 md:mt-16 lg:grid-cols-12 lg:gap-x-16">
         {post.headings.length > 2 ? (
           <aside className="lg:order-last lg:col-span-3 lg:col-start-10">
             <nav
               aria-label="İçindekiler"
-              className="lg:sticky lg:top-[calc(70px+2rem)]"
+              className="lg:sticky lg:top-[calc(64px+2rem)]"
             >
               <p className="label text-muted-foreground">İçindekiler</p>
-              <ol className="mt-5 flex flex-col gap-2.5 border-l border-rule">
+              <ol className="mt-4 flex flex-col gap-2.5 border-l border-rule">
                 {post.headings.map((heading) => (
                   <li
                     key={heading.id}
@@ -168,7 +169,7 @@ export default async function BlogPostPage({
                   >
                     <a
                       href={`#${heading.id}`}
-                      className="focus-ring text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="focus-ring text-sm text-secondary-text transition-colors duration-150 hover:text-foreground"
                     >
                       {heading.text}
                     </a>
@@ -186,20 +187,22 @@ export default async function BlogPostPage({
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
 
-          <footer className="mt-20 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-rule pt-8">
+          <footer className="mt-16 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-rule pt-8">
             <Link
               href="/blog"
-              className="focus-ring text-sm text-muted-foreground underline decoration-rule underline-offset-4 transition-colors hover:text-foreground hover:decoration-current"
+              className="focus-ring inline-flex items-center gap-2 text-sm text-secondary-text underline decoration-rule underline-offset-4 transition-colors duration-150 hover:text-foreground hover:decoration-current"
             >
-              ← Tüm yazılar
+              <ArrowLeft className="size-4 text-muted-foreground" strokeWidth={1.5} aria-hidden />
+              <span>Tüm yazılar</span>
             </Link>
             <a
               href={editUrl(post)}
               target="_blank"
               rel="noreferrer noopener"
-              className="focus-ring font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+              className="focus-ring inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition-colors duration-150 hover:text-foreground"
             >
-              Hata mı var? GitHub&apos;da düzenle ↗
+              <span>Hata mı var? GitHub&apos;da düzenle</span>
+              <ArrowUpRight className="size-3.5" strokeWidth={1.5} aria-hidden />
             </a>
           </footer>
         </div>

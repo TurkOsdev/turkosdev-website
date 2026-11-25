@@ -13,7 +13,7 @@ export function AuthorLine({ author }: { author: Author }) {
           {" "}
           <a
             href={`mailto:${author.email}`}
-            className="focus-ring text-muted-foreground transition-colors hover:text-primary"
+            className="focus-ring text-muted-foreground transition-colors duration-150 hover:text-brand"
           >
             &lt;{author.email}&gt;
           </a>

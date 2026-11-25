@@ -26,10 +26,10 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-rule">
-      <div className="mx-auto w-full max-w-[76rem] px-6 py-16 md:px-10 md:py-20">
-        <div className="grid gap-y-14 md:grid-cols-12 md:gap-x-16">
+      <div className="mx-auto w-full max-w-[76rem] px-6 py-16 md:px-8 md:py-20">
+        <div className="grid gap-y-12 md:grid-cols-12 md:gap-x-16">
           <div className="md:col-span-5">
-            <Link href="/" className="focus-ring inline-block">
+            <Link href="/" className="focus-ring inline-block rounded-sm">
               <Image
                 src="/turkosdev-wordmark.png"
                 alt=""
@@ -39,7 +39,7 @@ export function SiteFooter() {
               />
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
-            <p className="measure-sm mt-6 text-sm leading-relaxed text-muted-foreground">
+            <p className="measure-sm mt-5 text-sm leading-relaxed text-secondary-text">
               Türkçe işletim sistemi geliştirme ve düşük seviye programlama
               kaynakları.
             </p>
@@ -52,7 +52,7 @@ export function SiteFooter() {
               className={index === 0 ? "md:col-span-3 md:col-start-7" : "md:col-span-3"}
             >
               <h2 className="label text-muted-foreground">{column.title}</h2>
-              <ul className="mt-5 flex flex-col gap-3">
+              <ul className="mt-4 flex flex-col gap-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     {link.external ? (
@@ -60,14 +60,14 @@ export function SiteFooter() {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="focus-ring text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        className="focus-ring rounded-sm text-sm text-secondary-text transition-colors duration-150 hover:text-foreground"
                       >
                         {link.label}
                       </a>
                     ) : (
                       <Link
                         href={link.href}
-                        className="focus-ring text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        className="focus-ring rounded-sm text-sm text-secondary-text transition-colors duration-150 hover:text-foreground"
                       >
                         {link.label}
                       </Link>
@@ -79,15 +79,15 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-20 flex flex-col gap-2 border-t border-rule pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {siteConfig.name} — MIT
+        <div className="mt-16 flex flex-col gap-2 border-t border-rule pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="label text-muted-foreground">
+            © {new Date().getFullYear()} {siteConfig.name} · MIT
           </p>
           <a
             href={siteConfig.links.website}
             target="_blank"
             rel="noreferrer noopener"
-            className="focus-ring font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+            className="focus-ring label rounded-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
           >
             Bu site açık kaynak
           </a>

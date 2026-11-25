@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { Action } from "@/components/action";
 import { MemberRow } from "@/components/member-row";
-import AnimatedContent from "@/components/reactbits/AnimatedContent";
 import { SectionHead } from "@/components/section-head";
 import { getOrgMembers } from "@/lib/github";
 import { siteConfig } from "@/lib/site";
@@ -30,29 +29,21 @@ export default async function TeamPage() {
   const members = await getOrgMembers();
 
   return (
-    <div className="mx-auto w-full max-w-[76rem] px-6 pt-16 pb-28 md:px-10 md:pt-28 md:pb-36">
+    <div className="mx-auto w-full max-w-[76rem] px-6 pt-16 pb-24 md:px-8 md:pt-24 md:pb-32">
       <SectionHead
         label="Ekip"
         title="Topluluğu kuranlar"
-        note="Liste GitHub organizasyonundan otomatik oluşur, katkı sayısına göre sıralanır."
+        note="Liste GitHub organizasyonundan otomatik oluşur, katkı sayısına göre sıralanır"
       />
 
       {members.length > 0 ? (
-        <ul className="mt-14 md:mt-20">
-          {members.map((member, index) => (
-            <AnimatedContent
-              key={member.login}
-              distance={26}
-              duration={0.55}
-              delay={Math.min(index, 5) * 0.06}
-              threshold={0.1}
-            >
-              <MemberRow member={member} />
-            </AnimatedContent>
+        <ul className="mt-12 md:mt-16">
+          {members.map((member) => (
+            <MemberRow key={member.login} member={member} />
           ))}
         </ul>
       ) : (
-        <p className="mt-14 border-t border-rule pt-8 text-sm text-muted-foreground md:mt-20">
+        <p className="mt-12 border-t border-rule pt-8 text-sm text-secondary-text md:mt-16">
           Üye listesi şu anda alınamadı.{" "}
           <a
             href={`${siteConfig.links.github}/people`}
@@ -62,16 +53,16 @@ export default async function TeamPage() {
           >
             Organizasyon sayfasına
           </a>{" "}
-          bakabilirsiniz.
+          bakabilirsin.
         </p>
       )}
 
-      <div className="mt-24 grid gap-y-6 border-t border-rule pt-14 md:mt-32 md:grid-cols-12 md:gap-x-16">
+      <div className="mt-20 grid gap-y-6 border-t border-rule pt-12 md:mt-28 md:grid-cols-12 md:gap-x-12">
         <h2 className="display text-display-xs md:col-span-5">
           Sen de katıl
         </h2>
-        <div className="md:col-span-6 md:col-start-7 md:pt-2">
-          <p className="measure text-body text-muted-foreground">
+        <div className="md:col-span-6 md:col-start-7">
+          <p className="measure text-body text-secondary-text">
             Tek şart katkı vermek. Pull request&apos;in birleştirildikten sonra
             organizasyona davet edilirsin.
           </p>
